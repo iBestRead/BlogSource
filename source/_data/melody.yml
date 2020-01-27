@@ -1,5 +1,5 @@
 --- # ---------------
-language: zh
+language: zh-Hans
 
 # Theme color for customize
 # Notice: color value must in double quotes like "#000" or may cause error!
