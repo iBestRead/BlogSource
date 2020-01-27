@@ -9,7 +9,11 @@ jobs:
   build:
     name: Build and publish by GitHub Actions
     runs-on: ubuntu-latest
-
+    env:
+      ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+      ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+      ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+      ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
     steps:
     - name: 1. Git Checkout
       uses: actions/checkout@master
@@ -25,6 +29,7 @@ jobs:
     - name: 4. Generate Public Files
       run: |
         hexo clean
+        hexo algolia
         hexo g  
 
     - name: 5. Deploy To Github Pages...
