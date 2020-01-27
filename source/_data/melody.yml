@@ -1,4 +1,6 @@
 --- # ---------------
+language: zh
+
 # Theme color for customize
 # Notice: color value must in double quotes like "#000" or may cause error!
 # ---------------
@@ -67,20 +69,6 @@ algolia_search:
 local_search:
   enable: false
 
-# MathJax
-# Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/#/third-party-support?id=mathjax
-# ---------------
-mathjax:
-  enable: false
-  cdn: https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-
-# KaTeX
-# ---------------
-katex:
-  enable: false
-  cdn:
-    css: https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css
-
 # Toggle fireworks (IE >= 10)
 # ---------------
 fireworks: false
@@ -125,9 +113,9 @@ cdn:
 
 # Post info settings
 # ---------------
-avatar:
+avatar: https://cdn.ibestread.com/img/akinix_logo.jpg
 
-top_img: true # false or url of img
+top_img: https://cdn.ibestread.com/img/top_background.jpg
 
 post_meta:
   date_type: created # created or updated
@@ -155,11 +143,16 @@ post_copyright:
 # slide
 # For reveal.js config, see https://github.com/hakimel/reveal.js#configuration
 slide:
-  separator: ---
-  separator_vertical: --
+  separator: ===
+  separator_vertical: ==
   charset: utf-8
   theme: black
   # optional
+  loop: false
+  showNotes: false
+  autoPlayMedia: null
+  autoSlide: 0
+  autoSlideStoppable: true
   mouseWheel: false
   transition: slide
   transitionSpeed: default
@@ -168,11 +161,14 @@ slide:
   parallaxBackgroundHorizontal: null
   parallaxBackgroundVertical: null
 
-# QR_code:
-# - itemlist:
-#     img:
-#     text:
-
+QR_code:
+ - itemlist:
+     img: https://cdn.ibestread.com/img/ali_pay_code.jpg
+     text: 支付宝打赏
+ - itemlist:
+     img: https://cdn.ibestread.com/img/tencent_pay_code.jpg
+     text: 微信打赏
+     
 # adv:
 # enable: false
 # info:
@@ -180,11 +176,12 @@ slide:
 # Share System
 # ---------------
 addThis:
-  enable: false
+  enable: true
+  pubid: ra-5e2ecc1ad505208a
   #pubid:
 
 sharejs:
-  enable: true
+  enable: false
   disabled_sites: google,facebook
 
 # Comments System
@@ -205,13 +202,15 @@ disqus:
 # client_id:
 # client_secret:
 
-# gitalk:
-#   enable: false
-#   client_id:
-#   client_secret:
-#   repo:
-#   owner:
-#   admin:
+gitalk:
+  enable: true
+  client_id: 627199878458c320fb74
+  client_secret: 6e48bd6ac85dffc40aa34fa8cffd72b96517a294
+  repo: iBestRead.github.io
+  owner: akinix
+  admin: akinix
+  language: zh-CN
+  js: https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js
 
 # valine comment system. https://valine.js.org
 # valine:
@@ -260,10 +259,10 @@ busuanzi:
 #Name: url
 
 # Follow Me Button
-# follow:
-#   enable: true
-#   url: ''
-#   text: ''
+follow:
+  enable: true
+  url: 'https://github.com/akinix'
+  text: 'Follow Me'
 
 # Ads
 # ---------------
