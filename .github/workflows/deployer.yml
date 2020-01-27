@@ -29,8 +29,8 @@ jobs:
     - name: 4. Generate Public Files
       run: |
         hexo clean
+        hexo g
         hexo algolia
-        hexo g  
 
     - name: 5. Deploy To Github Pages...
       env:

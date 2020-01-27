@@ -80,7 +80,7 @@ time_format: HH:mm:ss
 use_date_for_updated: false
 
 # Algolia Search
-algolia: 
+algolia:
   chunkSize: 5000
   fields:
     - title
@@ -104,7 +104,7 @@ exclude:
 ignore:
 
 # Extensions
-## Plugins: https://hexo.io/plugins/
+
 ## Themes: https://hexo.io/themes/
 theme: melody
 
