@@ -206,7 +206,7 @@ gitalk:
   enable: true
   client_id: 627199878458c320fb74
   client_secret: 6e48bd6ac85dffc40aa34fa8cffd72b96517a294
-  repo: iBestRead.github.io
+  repo: https://github.com/iBestRead/iBestRead.github.io
   owner: akinix
   admin: akinix
   language: zh-CN
