@@ -1,0 +1,45 @@
+name: Blog deployer
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build and publish by GitHub Actions
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 1. Git Checkout
+      uses: actions/checkout@master
+      
+    - name: 2. Install Nodejs 10.x
+      uses: actions/setup-node@v1
+    
+    - name: 3. Install Hexo
+      run: |
+        npm install hexo-cli -g
+        npm install
+        
+    - name: 4. Generate Public Files
+      run: |
+        hexo clean
+        hexo g  
+
+    - name: 5. Deploy To Github Pages...
+      env:
+        GH_REF: github.com/iBestRead/iBestRead.github.io.git
+      run: |
+        git config --global user.name "akinix"
+        git config --global user.email "akinixu@gmail.com"
+        git log --pretty=format:"CI: %s" --date=short -n 1  > commit-message.log
+        git clone https://${GH_REF} .deploy_git
+        cd .deploy_git
+        git checkout master
+        cd ../
+        mv .deploy_git/.git/ ./public/
+        cd ./public/
+        git add .
+        git commit -F ../commit-message.log
+        git push --force --quiet "https://${{ secrets.GH_TOKEN }}@${GH_REF}" master:master
