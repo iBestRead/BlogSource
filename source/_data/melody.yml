@@ -18,7 +18,7 @@ language: zh-Hans
 # Main menu navigation
 menu:
   首页: /
-  归档: /archives
+  文章: /archives
   标签: /tags
   分类: /categories
   #XXX: /xxx
