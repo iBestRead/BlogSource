@@ -108,6 +108,11 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: melody
 
+lazyload:
+  enable: true
+  onlypost: false
+  loadingImg: /images/loading.svg
+
 # Baidu SEO
 baidu_url_submit:
   count: 10 # 提交最新的链接数
