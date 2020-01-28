@@ -14,6 +14,7 @@ jobs:
       ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
       ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
       ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+      BAIDU_URL_SUBMIT_TOKEN: ${{ secrets.BAIDU_URL_SUBMIT_TOKEN }}
     steps:
     - name: 1. Git Checkout
       uses: actions/checkout@master
@@ -30,6 +31,7 @@ jobs:
       run: |
         hexo clean
         hexo g
+        hexo d
         hexo algolia
 
     - name: 5. Deploy To Github Pages...

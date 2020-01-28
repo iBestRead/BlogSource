@@ -108,7 +108,13 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: melody
 
+# Baidu SEO
+baidu_url_submit:
+  count: 10 # 提交最新的链接数
+  host: blog.ibestread.com # 在百度站长平台中注册的域名,虽然官方推荐要带有 www, 但可以不带.
+  path: baidu_urls.txt # 文本文档的地址,新链接会保存在此文本文档里
+  
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: baidu_url_submitter

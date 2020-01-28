@@ -7,6 +7,7 @@ menu:
   文章: /archives
   标签: /tags
   分类: /categories
+  系列: /series
   #XXX: /xxx
 
 # PWA
@@ -52,9 +53,9 @@ fireworks: false
 
 # Analysis
 # ---------------
-baidu_analytics:
-google_analytics:
-tencent_analytics:
+baidu_analytics: 90338b924a229bc3b13945771720922c
+google_analytics: UA-157143555-1
+tencent_analytics: 66513060
 
 # stylesheets loaded in the <head>
 # ---------------
@@ -202,7 +203,7 @@ gitalk:
 # ---------------
 since: 2020
 
-footer_custom_text: <a href="http://www.beianbeian.com/search-1/%E7%B2%A4ICP%E5%A4%8717015620%E5%8F%B7.html">粤ICP备17015620号</a>
+footer_custom_text: <a href="http://www.beianbeian.com/beianxinxi/305c139fe2263063db72af4e473d63d7.html">粤ICP备17015620号</a>
 
 ICP:
   enable: false
