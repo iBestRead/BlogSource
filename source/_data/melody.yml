@@ -28,7 +28,7 @@ code_word_wrap: true
 # And you need to add the `fa` or `fab` prefix by your self.
 # ---------------
 social:
-  github fab: https://github.com/akinix
+  github fa: https://github.com/akinix
 #icon_name fab: url
 
 # Algolia search
@@ -77,7 +77,6 @@ scripts:
 cdn:
   css:
     fontawesome: https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css
-    fontawesomeV5: https://use.fontawesome.com/releases/v5.3.1/css/all.css
   js:
     anime: https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js
     jquery: https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js
