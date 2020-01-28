@@ -9,7 +9,7 @@ description: Best Read For You
 keywords:
 author: Akini Xu
 language: zh-Hans
-timezone: 'Asia/Shanghai'
+timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
