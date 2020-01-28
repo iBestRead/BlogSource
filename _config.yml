@@ -110,7 +110,7 @@ theme: melody
 
 lazyload:
   enable: true
-  onlypost: false
+  onlypost: true
   loadingImg: /images/loading.svg
 
 # Baidu SEO
