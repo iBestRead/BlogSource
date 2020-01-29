@@ -170,18 +170,31 @@ li a:hover {
     text-align: center;
 }
 
+.secret-way {
+    position: relative;
+    margin: 15px auto;
+    padding: 5px 15px;
+    font-weight: 400;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing : 2px;
+    font-size: 13px;
+}
+
 .objects img{
     z-index: 90;
     pointer-events: none;
 }
 
 .object_rocket{
-    z-index: 95;
+    z-index: 100 !important;
     position: absolute;
     transform: translateX(-50px);
     top: 75%;
     pointer-events: none;
-    animation: rocket-movement 200s linear infinite both running;
+    animation: rocket-movement 100s linear infinite both running;
 }
 
 .object_earth{
