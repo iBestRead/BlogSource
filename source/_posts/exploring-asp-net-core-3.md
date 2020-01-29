@@ -1,6 +1,5 @@
 ---
 title: 系列:探索 ASP.NET Core 3.0
-top_img: https://cdn.ibestread.com/img/banner_aspnetcore3.jpg
 tags: 
   - dotnet-core
   - asp-dotnet-core
