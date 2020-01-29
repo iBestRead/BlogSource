@@ -189,12 +189,11 @@ li a:hover {
 }
 
 .object_rocket{
-    z-index: 100 !important;
+    z-index: 300 !important;
     position: absolute;
     transform: translateX(-50px);
     top: 75%;
-    pointer-events: none;
-    animation: rocket-movement 100s linear infinite both running;
+    animation: rocket-movement 20s linear infinite both running;
 }
 
 .object_earth{
