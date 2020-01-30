@@ -1,62 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>404 Not Found: 该页面无法显示</title>
-  <script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<link rel="stylesheet" href="css/page-not-found.css">
-</head>
-<body class="bg-purple">
-        
-        <div class="stars">
-            <div class="custom-navbar">
-                
-                <div class="navbar-links">
-                    <ul>
-                      <li><a href="/archives">文章</a></li>
-                      <li><a href="/tags">标签</a></li>
-					  <li><a href="/categories">分类</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="central-body">
-                <img class="image-404" src="https://cdn.ibestread.com/img/404.svg" width="300px">
-                <a href="/" class="btn-go-home">回到嘉阅</a>
-                <div class="secret-way" id="secret-way">
-                  寻找通往新世界的通道
-                </div>
-            </div>
-            <div>
-              <img class="object_rocket" src="https://cdn.ibestread.com/img/rocket.svg" id="rocket" width="40px" />
-            </div>
-            <div class="objects">
-                <div class="earth-moon">
-                    <img class="object_earth" src="https://cdn.ibestread.com/img/earth.svg" width="100px">
-                    <img class="object_moon" src="https://cdn.ibestread.com/img/moon.svg" width="80px">
-                </div>
-                <div class="box_astronaut">
-                    <img class="object_astronaut" src="https://cdn.ibestread.com/img/astronaut.svg" width="140px">
-                </div>
-            </div>
-            <div class="glowing_stars">
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-            </div>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <title>404 Not Found: 该页面无法显示</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="css/page-not-found.css">
+</head>
+
+<body class="bg-purple">
+
+    <div class="stars">
+        <div class="custom-navbar">
+
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="/archives">文章</a></li>
+                    <li><a href="/tags">标签</a></li>
+                    <li><a href="/categories">分类</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="central-body">
+            <img class="image-404" src="https://cdn.ibestread.com/img/404.svg" width="300px">
+            <a href="/" class="btn-go-home">回到嘉阅</a>
+            <div class="secret-way" id="secret-way">
+                寻找通往新世界的通道
+            </div>
+        </div>
+        <div>
+            <img class="object_rocket" src="https://cdn.ibestread.com/img/rocket.svg" id="rocket" width="40px" />
+        </div>
+        <div class="objects">
+            <div class="earth-moon">
+                <img class="object_earth" src="https://cdn.ibestread.com/img/earth.svg" width="100px">
+                <img class="object_moon" src="https://cdn.ibestread.com/img/moon.svg" width="80px">
+            </div>
+            <div class="box_astronaut">
+                <img class="object_astronaut" src="https://cdn.ibestread.com/img/astronaut.svg" width="140px">
+            </div>
+        </div>
+        <div class="glowing_stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
         </div>
 
-    </body>
-	<script>
+    </div>
+
+</body>
+<script>
     $(document).ready(function () {
         $("#rocket").click(function () {
             $("#secret-way").html("恭喜!通道已经打开.<br>"
                 + "https://zhaoxixiangban.cc/user/s5.php?token=e9e3a13e4e2axxxx0ca0e56ae400489c<br>"
-                + "将上面xxxx替换成我的手机号后4位+5362.");
+                + "将上面xxxx替换成我的手机号后4位+5362.<br>"
+                + "最后为什么叫嘉阅?原因很简单---儿子叫嘉阅!"
+            );
         });
     });
 </script>
+
 </html>
