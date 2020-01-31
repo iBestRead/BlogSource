@@ -24,13 +24,13 @@ date: 2020-01-31 10:31:59
 
 本系列文章列表:
 
-1. [探索ASP.Net Core 3.0 中的.csproj文件](https://blog.ibestread.com/exploring-the-new-project-file-in-asp-net-core-3/)
-2. [探索ASP.Net Core 3.0 中的Program.cs文件](https://blog.ibestread.com/exploring-the-program-file-in-asp-net-core-3/)
-3. [探索ASP.Net Core 3.0 中的通用主机](https://blog.ibestread.com/exploring-the-generic-host-in-asp-net-core-3/)
-4. [ASP.Net  Core 3.0的`Startup.cs`在不同项目类型中的差异](https://blog.ibestread.com/comparing-startup-between-the-asp-net-core-3-templates/)
-5. [ASP.Net  Core 3.0的新特性-Service provider validation](https://blog.ibestread.com/new-in-asp-net-core-3-service-provider-validation)
-6. [ASP.Net  Core 3.0中应用程序启动时运行异步任务](https://blog.ibestread.com/running-async-tasks-on-app-startup-in-asp-net-core-3)
-7. [介绍`IHostLifetime`及与通用主机间的作用关系](https://blog.ibestread.com/introducing-ihostlifetime-and-untangling-the-generic-host-startup-interactions)
-8. [ASP.Net  Core 3.0的新特性-启动时的结构化日志](https://blog.ibestread.com/new-in-aspnetcore-3-structured-logging-for-startup-messages)
-9. [ASP.Net  Core 3.0的新特性-本地工具](https://blog.ibestread.com/new-in-net-core-3-local-tools)
+1. [ASP.Net Core 3.0中的.csproj文件](https://blog.ibestread.com/exploring-the-new-project-file-in-asp-net-core-3/)
+2. [ASP.Net Core 3.0中的Program.cs文件](https://blog.ibestread.com/exploring-the-program-file-in-asp-net-core-3/)
+3. [ASP.Net Core 3.0中的通用主机](https://blog.ibestread.com/exploring-the-generic-host-in-asp-net-core-3/)
+4. [ASP.Net Core 3.0的Startup.cs在不同项目类型中的差异](https://blog.ibestread.com/comparing-startup-between-the-asp-net-core-3-templates/)
+5. [ASP.Net Core 3.0的新特性-Service provider validation](https://blog.ibestread.com/new-in-asp-net-core-3-service-provider-validation)
+6. [ASP.Net Core 3.0中应用程序启动时运行异步任务](https://blog.ibestread.com/running-async-tasks-on-app-startup-in-asp-net-core-3)
+7. [介绍IHostLifetime及与通用主机间的作用关系](https://blog.ibestread.com/introducing-ihostlifetime-and-untangling-the-generic-host-startup-interactions)
+8. [ASP.Net Core 3.0的新特性-启动时的结构化日志](https://blog.ibestread.com/new-in-aspnetcore-3-structured-logging-for-startup-messages)
+9. [ASP.Net Core 3.0的新特性-本地工具](https://blog.ibestread.com/new-in-net-core-3-local-tools)
 
