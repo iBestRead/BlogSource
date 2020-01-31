@@ -118,7 +118,34 @@ baidu_url_submit:
   count: 10 # 提交最新的链接数
   host: blog.ibestread.com # 在百度站长平台中注册的域名,虽然官方推荐要带有 www, 但可以不带.
   path: baidu_urls.txt # 文本文档的地址,新链接会保存在此文本文档里
-  
+
+# Markdown-it config
+## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki
+markdown:
+  render:
+    html: true                 # 是否对HTML标签进行解析，false时HTML将按照原样输出
+    xhtmlOut: false            # 是否需要满足严格的XHTML格式，换行为<br />
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-emoji
+  anchors:
+    level: 2
+    collisionSuffix: ''
+    permalink: false
+    permalinkClass: 'header-anchor'
+    permalinkSide: 'left'
+    permalinkSymbol: '¶'
+    case: 0
+    separator: ''
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
