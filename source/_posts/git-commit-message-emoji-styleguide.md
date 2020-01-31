@@ -13,7 +13,9 @@ date: 2020-01-31 18:20:00
 
 在执行`git commit`时使用emoji为本次提交打上一个表情标签，使得此次*commit*的工作更表意的显示，方面在整体历史提交记录中易于区分和查找。如下图：
 
-![预览](https://cdn.ibestread.com/img/styleguide-git-commit-message.png)
+![示例提交emoji](https://cdn.ibestread.com/img/styleguide-git-commit-message.png)
+
+<!-- more --> 
 
 ## 提交格式
 
