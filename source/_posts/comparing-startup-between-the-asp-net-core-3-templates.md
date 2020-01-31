@@ -83,7 +83,7 @@ public class Startup
 
 ## ASP.NET Core Web API template
 
-使用` dotnet new webapi `创建的Web API模板项目是最复杂的。它包含了一个简单的[带有HttpGet的Controller](https://github.com/aspnet/AspNetCore/blob/v3.0.0-preview9.19424.4/src/ProjectTemplates/Web.ProjectTemplates/content/WebApi-CSharp/Controllers/WeatherForecastController.cs)。另外 *Startup.cs*文件也比空模板项目稍微复杂点，单大体上是相同的。代码如下：
+使用` dotnet new webapi `创建的Web API模板项目是最复杂的。它包含了一个简单的[带有HttpGet的Controller](https://github.com/aspnet/AspNetCore/blob/v3.0.0-preview9.19424.4/src/ProjectTemplates/Web.ProjectTemplates/content/WebApi-CSharp/Controllers/WeatherForecastController.cs)。另外 *Startup.cs*文件也比空模板项目稍微复杂点，但大体上是相同的。代码如下：
 
 ```csharp
 public class Startup
