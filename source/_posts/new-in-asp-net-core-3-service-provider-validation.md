@@ -12,11 +12,12 @@ tags:
 date: 2020-02-01 14:39:00
 ---
 
+> 译者:  [Akini Xu](https://blog.ibestread.com)
+>
 > 原文:  [New in ASP.NET Core 3: Service provider validation](https://andrewlock.net/new-in-asp-net-core-3-service-provider-validation/) 
 >
 > 作者:  [Andrew Lock](https://andrewlock.net/about/)
 >
-> 译者:  [Akini Xu](https://blog.ibestread.com)
 
 此文是 [探索 ASP.NET Core 3.0](https://blog.ibestread.com/exploring-asp-net-core-3) 第3篇:
 
