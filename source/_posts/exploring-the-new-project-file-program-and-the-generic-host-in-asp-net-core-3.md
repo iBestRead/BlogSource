@@ -33,7 +33,7 @@ date: 2020-01-31 10:31:58
 
 ## 介绍
 
-`.NET Core 3.0`的核心是预计于9月23日的 [.NET Conf](https://www.dotnetconf.net/) 期间发布，现在预览版（`Preview 8`）现已发布。最终` Release版 `与`Preview版`不会有太多的差异，我们现在来看看到底带来了些什么。 
+`.NET Core 3.0`的核心是预计于9月23日的 [.NET Conf](https://www.dotnetconf.net/) 期间发布，~~现在预览版（`Preview 8`）现已发布~~现在.NET Core 3.1 已发布。最终` Release版 `与`Preview版`不会有太多的差异，我们现在来看看到底带来了些什么。 
 
 `.NET Core 3.0`的主要功能集中在Windows桌面应用程序可以在`.NET Core`上运行，另外`ASP.NET Core`也有很多新功能。其中最大的新功能是 [server-side Blazor](https://docs.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-3.0#server-side) （~~我更感兴趣的客户端版本个人，这是不完全产品尚未推出~~目前已经更新）。 
 
