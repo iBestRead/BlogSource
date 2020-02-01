@@ -24,9 +24,7 @@ date: 2020-01-31 10:31:59
 
 本系列文章列表:
 
-1. [ASP.Net Core 3.0中的.csproj文件](https://blog.ibestread.com/exploring-the-new-project-file-in-asp-net-core-3/)
-2. [ASP.Net Core 3.0中的Program.cs文件](https://blog.ibestread.com/exploring-the-program-file-in-asp-net-core-3/)
-3. [ASP.Net Core 3.0中的通用主机](https://blog.ibestread.com/exploring-the-generic-host-in-asp-net-core-3/)
+1. [ASP.Net Core 3.0中的.csproj文件,Program.cs及通用主机](exploring-the-new-project-file-program-and-the-generic-host-in-asp-net-core-3/)
 4. [ASP.Net Core 3.0的Startup.cs在不同项目类型中的差异](https://blog.ibestread.com/comparing-startup-between-the-asp-net-core-3-templates/)
 5. [ASP.Net Core 3.0的新特性-Service provider validation](https://blog.ibestread.com/new-in-asp-net-core-3-service-provider-validation)
 6. [ASP.Net Core 3.0中应用程序启动时运行异步任务](https://blog.ibestread.com/running-async-tasks-on-app-startup-in-asp-net-core-3)

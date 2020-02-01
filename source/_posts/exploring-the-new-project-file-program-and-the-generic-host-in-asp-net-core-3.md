@@ -1,13 +1,11 @@
 ---
-title: 探索新的.csproj文件,Program.cs及通用主机
+title: ASP.Net Core 3.0中的.csproj文件,Program.cs及通用主机
 tags: 
   - dotnet core
   - asp dotnet core
   - asp dotnet core 3.0
+  - csproj
 
-categories:
-  - 系列
-  - 探索ASP.NETCore3.0
 
 date: 2020-01-31 10:31:58
 ---
@@ -19,15 +17,15 @@ date: 2020-01-31 10:31:58
 > 作者:  [Andrew Lock](https://andrewlock.net/about/)
 >
 
-此文是 [探索 ASP.NET Core 3.0](https://blog.ibestread.com/exploring-asp-net-core-3) 第一篇:
+此文是 [探索 ASP.NET Core 3.0](https://blog.ibestread.com/exploring-asp-net-core-3) 第1篇:
 
-1. 探索新的.csproj文件,Program.cs及通用主机(本文)
-2. [ASP.Net  Core 3.0的`Startup.cs`在不同项目类型中的差异](https://blog.ibestread.com/comparing-startup-between-the-asp-net-core-3-templates/)
-3. [ASP.Net  Core 3.0的新特性-Service provider validation](https://blog.ibestread.com/new-in-asp-net-core-3-service-provider-validation)
-4. [ASP.Net  Core 3.0中应用程序启动时运行异步任务](https://blog.ibestread.com/running-async-tasks-on-app-startup-in-asp-net-core-3)
-5. [介绍`IHostLifetime`及与通用主机间的作用关系](https://blog.ibestread.com/introducing-ihostlifetime-and-untangling-the-generic-host-startup-interactions)
-6. [ASP.Net  Core 3.0的新特性-启动时的结构化日志](https://blog.ibestread.com/new-in-aspnetcore-3-structured-logging-for-startup-messages)
-7. [ASP.Net  Core 3.0的新特性-本地工具](https://blog.ibestread.com/new-in-net-core-3-local-tools)
+1. ASP.Net Core 3.0中的.csproj文件,Program.cs及通用主机(本文)
+2. [ASP.Net Core 3.0的Startup.cs在不同项目类型中的差异](https://blog.ibestread.com/comparing-startup-between-the-asp-net-core-3-templates/)
+3. [ASP.Net Core 3.0的新特性-Service provider validation](https://blog.ibestread.com/new-in-asp-net-core-3-service-provider-validation)
+4. [ASP.Net Core 3.0中应用程序启动时运行异步任务](https://blog.ibestread.com/running-async-tasks-on-app-startup-in-asp-net-core-3)
+5. [介绍IHostLifetime及与通用主机间的作用关系](https://blog.ibestread.com/introducing-ihostlifetime-and-untangling-the-generic-host-startup-interactions)
+6. [ASP.Net Core 3.0的新特性-启动时的结构化日志](https://blog.ibestread.com/new-in-aspnetcore-3-structured-logging-for-startup-messages)
+7. [ASP.Net Core 3.0的新特性-本地工具](https://blog.ibestread.com/new-in-net-core-3-local-tools)
 
 在这篇文章中我们来看看`ASP.NET Core 3.0`的应用程序的基础组件 : `.csproj`的项目文件和`Program.cs`启动文件。我将介绍`ASP.NET Core 3.0`与`ASP.NET Core 2.X`的差异，并讨论相关APIs的使用变化。 
 
@@ -35,7 +33,7 @@ date: 2020-01-31 10:31:58
 
 ## 介绍
 
-`.NET Core 3.0`的核心是预计于9月23日的 [.NET Conf](https://www.dotnetconf.net/) 期间发布，现在预览版（`Preview 8`）现已发布。最终` Release版 `与`Preview版`不不会有太多的差异，我们现在来看看到底带来了些什么。 
+`.NET Core 3.0`的核心是预计于9月23日的 [.NET Conf](https://www.dotnetconf.net/) 期间发布，现在预览版（`Preview 8`）现已发布。最终` Release版 `与`Preview版`不会有太多的差异，我们现在来看看到底带来了些什么。 
 
 `.NET Core 3.0`的主要功能集中在Windows桌面应用程序可以在`.NET Core`上运行，另外`ASP.NET Core`也有很多新功能。其中最大的新功能是 [server-side Blazor](https://docs.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-3.0#server-side) （~~我更感兴趣的客户端版本个人，这是不完全产品尚未推出~~目前已经更新）。 
 
