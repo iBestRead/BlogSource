@@ -6,13 +6,10 @@ tags:
   - asp-dotnet-core-3
   - Startup
 
-categories:
-  - 系列
-  - 探索ASP.NETCore3.0
 date: 2020-01-31 10:31:55
 ---
 
-> 原文:  [Exploring the new project file, Program.cs, and the generic host](https://andrewlock.net/exploring-the-new-project-file-program-and-the-generic-host-in-asp-net-core-3/) 
+> 原文:  [Comparing Startup.cs between the ASP.NET Core 3.0 templates](https://andrewlock.net/comparing-startup-between-the-asp-net-core-3-templates/) 
 >
 > 作者:  [Andrew Lock](https://andrewlock.net/about/)
 >

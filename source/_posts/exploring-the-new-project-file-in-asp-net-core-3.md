@@ -6,10 +6,6 @@ tags:
   - asp dotnet core 3.0
   - csproj
 
-categories:
-  - 系列
-  - 探索ASP.NETCore3.0
-
 date: 2020-01-31 10:31:58
 ---
 

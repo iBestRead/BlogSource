@@ -7,10 +7,6 @@ tags:
   - Host
   - Generic Host
 
-categories:
-  - 系列
-  - 探索ASP.NETCore3.0
-
 date: 2020-01-31 10:31:56
 ---
 
