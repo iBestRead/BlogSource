@@ -9,7 +9,7 @@ tags:
   - DI
   - IOC
 
-date: 2020-01-31 10:31:54
+date: 2020-02-01 14:39:00
 ---
 
 > 原文:  [New in ASP.NET Core 3: Service provider validation](https://andrewlock.net/new-in-asp-net-core-3-service-provider-validation/) 
