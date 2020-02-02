@@ -12,22 +12,22 @@ tags:
 date: 2020-02-01 14:39:00
 ---
 
-> 译者:  [Akini Xu](https://blog.ibestread.com)
+> 译者:  [Akini Xu](/)
 >
 > 原文:  [New in ASP.NET Core 3: Service provider validation](https://andrewlock.net/new-in-asp-net-core-3-service-provider-validation/) 
 >
 > 作者:  [Andrew Lock](https://andrewlock.net/about/)
 >
 
-此文是 [探索 ASP.NET Core 3.0](https://blog.ibestread.com/exploring-asp-net-core-3) 第3篇:
+此文是 [探索 ASP.NET Core 3.0](/exploring-asp-net-core-3) 第3篇:
 
-1. [ASP.Net Core 3.0中的.csproj文件,Program.cs及通用主机](exploring-the-new-project-file-program-and-the-generic-host-in-asp-net-core-3/)
-2. [ASP.Net Core 3.0的Startup.cs在不同项目类型中的差异](https://blog.ibestread.com/comparing-startup-between-the-asp-net-core-3-templates/)
+1. [ASP.Net Core 3.0中的.csproj文件,Program.cs及通用主机](/exploring-the-new-project-file-program-and-the-generic-host-in-asp-net-core-3/)
+2. [ASP.Net Core 3.0的Startup.cs在不同项目类型中的差异](/comparing-startup-between-the-asp-net-core-3-templates/)
 3. ASP.Net Core 3.0的新特性-Service provider validation(本文)
-4. [ASP.Net Core 3.0中应用程序启动时运行异步任务](https://blog.ibestread.com/running-async-tasks-on-app-startup-in-asp-net-core-3)
-5. [介绍IHostLifetime及与通用主机间的作用关系](https://blog.ibestread.com/introducing-ihostlifetime-and-untangling-the-generic-host-startup-interactions)
-6. [ASP.Net Core 3.0的新特性-启动时的结构化日志](https://blog.ibestread.com/new-in-aspnetcore-3-structured-logging-for-startup-messages)
-7. [ASP.Net Core 3.0的新特性-本地工具](https://blog.ibestread.com/new-in-net-core-3-local-tools)
+4. [ASP.Net Core 3.0中应用程序启动时运行异步任务](/running-async-tasks-on-app-startup-in-asp-net-core-3/)
+5. [介绍IHostLifetime及与通用主机间的作用关系](/introducing-ihostlifetime-and-untangling-the-generic-host-startup-interactions/)
+6. [ASP.Net Core 3.0的新特性-启动时的结构化日志](/new-in-aspnetcore-3-structured-logging-for-startup-messages/)
+7. [ASP.Net Core 3.0的新特性-本地工具](/new-in-net-core-3-local-tools)
 
 此篇文章来介绍ASP.NET Core 3.0中的新功能“编译时验证”。 此功能可以用来检测依赖注入中的配置错误。 具体来说，就是检查未在容器中注入但被依赖的服务。
 

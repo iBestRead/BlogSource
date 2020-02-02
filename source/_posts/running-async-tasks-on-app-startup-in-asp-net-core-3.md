@@ -10,22 +10,22 @@ tags:
 date: 2020-02-01 19:03:00
 ---
 
-> 译者:  [Akini Xu](https://blog.ibestread.com)
+> 译者:  [Akini Xu](/)
 >
 > 原文:  [Running async tasks on app startup in ASP.NET Core 3.0](https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-3/) 
 >
 > 作者:  [Andrew Lock](https://andrewlock.net/about/)
 >
 
-此文是 [探索 ASP.NET Core 3.0](https://blog.ibestread.com/exploring-asp-net-core-3) 第4篇:
+此文是 [探索 ASP.NET Core 3.0](/exploring-asp-net-core-3) 第4篇:
 
-1. [ASP.Net Core 3.0中的.csproj文件,Program.cs及通用主机](exploring-the-new-project-file-program-and-the-generic-host-in-asp-net-core-3/)
-2. [ASP.Net Core 3.0的Startup.cs在不同项目类型中的差异](https://blog.ibestread.com/comparing-startup-between-the-asp-net-core-3-templates/)
-3. [ASP.Net Core 3.0的新特性-Service provider validation](https://blog.ibestread.com/new-in-asp-net-core-3-service-provider-validation)
+1. [ASP.Net Core 3.0中的.csproj文件,Program.cs及通用主机](/exploring-the-new-project-file-program-and-the-generic-host-in-asp-net-core-3/)
+2. [ASP.Net Core 3.0的Startup.cs在不同项目类型中的差异](/comparing-startup-between-the-asp-net-core-3-templates/)
+3. [ASP.Net Core 3.0的新特性-Service provider validation](/new-in-asp-net-core-3-service-provider-validation/)
 4. ASP.Net Core 3.0中应用程序启动时运行异步任务(本文)
-5. [介绍IHostLifetime及与通用主机间的作用关系](https://blog.ibestread.com/introducing-ihostlifetime-and-untangling-the-generic-host-startup-interactions)
-6. [ASP.Net Core 3.0的新特性-启动时的结构化日志](https://blog.ibestread.com/new-in-aspnetcore-3-structured-logging-for-startup-messages)
-7. [ASP.Net Core 3.0的新特性-本地工具](https://blog.ibestread.com/new-in-net-core-3-local-tools)
+5. [介绍IHostLifetime及与通用主机间的作用关系](/introducing-ihostlifetime-and-untangling-the-generic-host-startup-interactions/)
+6. [ASP.Net Core 3.0的新特性-启动时的结构化日志](/new-in-aspnetcore-3-structured-logging-for-startup-messages/)
+7. [ASP.Net Core 3.0的新特性-本地工具](/new-in-net-core-3-local-tools)
 
 在本文中，我将介绍如何在ASP.NET Core 3.0的`WebHost`中做微小的改动，就能让应用程序在启动时，更方便地运行异步任务。
 
@@ -43,7 +43,7 @@ date: 2020-02-01 19:03:00
 
 对此，我提出了两种可能的解决方案：
 
-- 在 `WebHost Build`之后 ，在``WebHost Run`之前，[手动执行任务](https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-part-2/#an-example-async-database-migration)。
+- 在 `WebHost Build`之后 ，在`WebHost Run`之前，[手动执行任务](https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-part-2/#an-example-async-database-migration)。
 - 在服务器启动后，但接收请求之前，使用[自定义`IServer`实现](https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-part-2/#an-alternative-approach-by-decorating-iserver)运行任务。 不幸的是，这种方法可能会有[问题](https://github.com/andrewlock/NetEscapades.AspNetCore.StartupTasks/issues/4)。
 
 在ASP.NET Core 3.0中，我们仅仅对`WebHost`代码进行微小的改动，就将带来很大的不同。我们不再需要上面那些解决方案，并且可以放心地使用`IHostedService`。
