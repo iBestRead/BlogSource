@@ -23,8 +23,6 @@ date: 2020-02-03 19:37:00
 
 类似 Linux 下的apt-get 、yum等程序包管理器。 
 
-`Chocolatey`的安装与使用都非常简单，我们一起来体验一下！
-
 ===
 
 ## 安装Chocolatey
@@ -86,7 +84,7 @@ nvs 1.5.2 [Approved] Downloads cached for licensed users
 
 ===
 
-###  在网页端查找软件就
+###  在网页端查找软件包
 <!-- .slide: data-transition="convex" data-background="#69C282" -->
 
 -  登录 `choco` 软件包网站：[chocolatey.org](https://chocolatey.org/packages) 
@@ -116,6 +114,5 @@ choco install googlechrome -y # 安装chrome
 choco install typora -y # 安装typora
 choco install sourcetree -y # 安装Source Tree
 ```
-
 
 
