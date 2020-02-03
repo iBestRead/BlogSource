@@ -1,8 +1,8 @@
 ---
 title: Git提交时的emoji图标使用指南
 tags: 
-  - git commit
-  - emoji
+  - GIT COMMIT
+  - EMOJI
   - 指南
 
 categories:
