@@ -89,7 +89,7 @@ nvs 1.5.2 [Approved] Downloads cached for licensed users
 ###  在网页端查找软件就
 <!-- .slide: data-transition="convex" data-background="#69C282" -->
 
--  登录 `choco` 软件包网站：[https://chocolatey.org/packages](https://sitoi.cn/go.html?u=aHR0cHM6Ly9jaG9jb2xhdGV5Lm9yZy9wYWNrYWdlcw==) 
+-  登录 `choco` 软件包网站：[chocolatey.org](https://chocolatey.org/packages) 
 
 - 在搜索框搜索要安装的软件
 
