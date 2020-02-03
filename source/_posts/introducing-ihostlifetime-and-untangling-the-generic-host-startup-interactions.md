@@ -30,6 +30,8 @@ date: 2020-02-02 10:49:00
 
 在文章的后半部分，我会详细介绍各个类之间的如何交互，及它们在应用程序启动和关闭期间的作用。 同时也会详细介绍通常不需要我们处理的事情，即使不需要关心，但是理解其原理对于我们也很有必要！ 
 
+<!-- more --> 
+
 ## 背景 在通用主机上重新构建ASP.NET Core 3.0
 
 ASP.NET Core 3.0的主要功能之一就是整体框架都已基于[.NET 通用主机](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0)进行了重写。 .NET 通用主机是在ASP.NET Core 2.1中引入的，它是ASP.NET Core`WebHost`的“非Web”版本。通用主机允许您在非Web情况下使用*Microsoft.Extensions*中的功能，比如依赖注入，配置和日志记录等。 

@@ -35,7 +35,7 @@ date: 2020-02-01 14:39:00
 
 > 需要指出的是：检查依赖注入配置并不是一个全新想法，这只是我们经常使用的一个功能`StructureMap`，参考[Lamar](https://jasperfx.github.io/lamar/documentation/ioc/diagnostics/validating-container-configuration/)
 
- <!-- more --> 
+<!-- more --> 
 
 ## 简单的示例
 
