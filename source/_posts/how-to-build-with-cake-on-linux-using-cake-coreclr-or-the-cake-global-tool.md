@@ -18,6 +18,8 @@ date: 2020-02-03 15:38:00
 
 在本文中，我会演示使用[Cake的构建系统](https://cakebuild.net/)在Linux上构建.NET Core项目的两种方式：一是使用`Cake.CoreCLR`库，二是使用`Cake.Tool .NET Core`全局工具。 这篇文章仅涉及使用`Cake`，并不详细说明如何编写自定义的Cake构建脚本。 我建议阅读[Muhammad Rehan Saeed](https://rehansaeed.com/cross-platform-devops-net-core/)的文章，其中提供了Cake构建脚本，或者我之前的文章[有关在Docker中使用Cake]( https://andrewlock.net/building-asp-net-core-apps-using-cake-in-docker/ )。
 
+<!-- more -->
+
 ## Cake，Cake.CoreCLR，Cake.Tool
 
 在[之前的文章中](https://andrewlock.net/building-asp-net-core-apps-using-cake-in-docker/)，我描述了如何使用Mono在Linux上运行.NET Framework的Cake。那个时候，我们可以这种方式来编译.NET Framework的库，并运行单元测试。
