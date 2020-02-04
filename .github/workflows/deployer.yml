@@ -53,9 +53,7 @@ jobs:
         git push --force --quiet "https://${{ secrets.GH_TOKEN }}@${GH_REF}" master:master
         rm -rf .git
         cd ../
-        git config --global user.name "akinix"
-        git config --global user.email "akinix@qq.com"
-        git clone https://${CODING_REF} .deploy_coding
+        git clone https://${{ secrets.CODING_USERNAME }}:${{ secrets.CODING_TOKEN }}@${CODING_REF} .deploy_coding
         cd .deploy_coding
         git checkout master
         cd ../
