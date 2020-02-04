@@ -70,4 +70,4 @@ jobs:
         cd ./public/
         git add .
         git commit -F ../commit-message.log
-        git push --force --quiet "https://${{ secrets.CODING_USERNAME }}:${{ secrets.CODING_TOKEN }}@${GH_REF}" master:master
+        git push --force --quiet "https://${{ secrets.CODING_USERNAME }}:${{ secrets.CODING_TOKEN }}@${CODING_REF}" master:master
