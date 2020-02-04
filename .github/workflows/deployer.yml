@@ -57,12 +57,12 @@ jobs:
         
     - name: 6. Deploy To Coding...
       env:
-        GH_REF: e.coding.net/ibestread/Blog.git
+        CODING_REF: e.coding.net/ibestread/Blog.git
       run: |
         git config --global user.name "akinix"
         git config --global user.email "akinix@qq.com"
         git log --pretty=format:"CI: %s" --date=short -n 1  > commit-message.log
-        git clone https://${GH_REF} .deploy_coding
+        git clone https://${CODING_REF} .deploy_coding
         cd .deploy_coding
         git checkout master
         cd ../
@@ -70,4 +70,4 @@ jobs:
         cd ./public/
         git add .
         git commit -F ../commit-message.log
-        git push --force --quiet "https://${{ secrets.CODING_TOKEN }}@${GH_REF}" master:master
+        git push --force --quiet "https://${{ secrets.CODING_USERNAME }}:${{ secrets.CODING_TOKEN }}@${GH_REF}" master:master
