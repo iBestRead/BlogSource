@@ -66,7 +66,7 @@ jobs:
         cd .deploy_coding
         git checkout master
         cd ../
-        mv .deploy_git/.git/ ./public/
+        mv .deploy_coding/.git/ ./public/
         cd ./public/
         git add .
         git commit -F ../commit-message.log
