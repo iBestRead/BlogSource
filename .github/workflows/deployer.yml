@@ -37,6 +37,7 @@ jobs:
     - name: 5. Deploy To Github Pages...
       env:
         GH_REF: github.com/iBestRead/iBestRead.github.io.git
+        CODING_REF: e.coding.net/ibestread/Blog.git
       run: |
         git config --global user.name "akinix"
         git config --global user.email "akinixu@gmail.com"
@@ -50,18 +51,10 @@ jobs:
         git add .
         git commit -F ../commit-message.log
         git push --force --quiet "https://${{ secrets.GH_TOKEN }}@${GH_REF}" master:master
-
-    - name: 6. Remove public .git
-      run: rm -rf *
-      working-directory: ./public/.git
-        
-    - name: 6. Deploy To Coding...
-      env:
-        CODING_REF: e.coding.net/ibestread/Blog.git
-      run: |
+        rm -rf .git
+        cd ../
         git config --global user.name "akinix"
         git config --global user.email "akinix@qq.com"
-        git log --pretty=format:"CI: %s" --date=short -n 1  > commit-message.log
         git clone https://${CODING_REF} .deploy_coding
         cd .deploy_coding
         git checkout master
