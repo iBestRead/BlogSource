@@ -29,7 +29,7 @@ date: 2020-01-31 10:31:58
 
 在这篇文章中我们来看看`ASP.NET Core 3.0`的应用程序的基础组件 : `.csproj`的项目文件和`Program.cs`启动文件。我将介绍`ASP.NET Core 3.0`与`ASP.NET Core 2.X`的差异，并讨论相关APIs的使用变化。 
 
- <!-- more --> 
+<!-- more --> 
 
 ## 介绍
 

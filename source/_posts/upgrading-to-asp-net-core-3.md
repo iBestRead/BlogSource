@@ -10,7 +10,7 @@ categories:
   - 系列
   - 升级至 ASP.NET Core 3.0
 
-date: 2020-02-04 11:30:00
+date: 2020-02-05 11:32:00
 ---
 
 > 译者:  [Akini Xu](/)
@@ -27,10 +27,8 @@ date: 2020-02-04 11:30:00
 本系列文章列表:
 
 1. [转换.NET Standard 2.0类库到.NET Core 3.0](/converting-a-netstandard-2-library-to-netcore-3/)
-4. [对比IHostingEnvironment与IHostEnvironment .NET Core 3.0中的过时类型](/ihostingenvironment-vs-ihost-environment-obsolete-types-in-net-core-3/)
-5. [`ASP.Net Core 3.0`新特性-Service provider validation](/new-in-asp-net-core-3-service-provider-validation/)
-6. [`ASP.Net Core 3.0`应用程序启动时运行异步任务](/running-async-tasks-on-app-startup-in-asp-net-core-3/)
-7. [介绍IHostLifetime及与通用主机间的作用关系](/introducing-ihostlifetime-and-untangling-the-generic-host-startup-interactions/)
-8. [`ASP.Net Core 3.0`新特性-启动时的结构化日志](/new-in-aspnetcore-3-structured-logging-for-startup-messages/)
-9. [`.Net Core 3.0`新特性-本地工具](/new-in-net-core-3-local-tools)
+4. [对比IHostingEnvironment与IHostEnvironment .NET及Core 3.0中的过时类型](/ihostingenvironment-vs-ihost-environment-obsolete-types-in-net-core-3/)
+5. [不要在Startup类的构造函数中使用依赖注入](/avoiding-startup-service-injection-in-asp-net-core-3/)
+6. [将终端中间件转换为端点路由](/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/)
+7. [将集成测试升级至.NET Core 3.0](/converting-integration-tests-to-net-core-3/)
 
