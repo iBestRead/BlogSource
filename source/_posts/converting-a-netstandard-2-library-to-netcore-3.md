@@ -77,21 +77,21 @@ date: 2020-02-05 22:01:00
 
 当您依赖其他NuGet软件包时，事情会变得有些棘手。
 
-如果你依赖的类库的依赖（向上依赖）不是 _Microsoft.AspNetCore. *_和 _Microsoft.Extensions.*_，那就无需担心，只要你依赖的类库支持你的目标框架即可。但是如果你依赖的类库依赖了微软的库，那处理起来就要特别小心。
+如果你依赖的类库的依赖（向上依赖）不是 *Microsoft.AspNetCore.\**和 *Microsoft.Extensions.\**，那就无需担心，只要你依赖的类库支持你的目标框架即可。但是如果你依赖的类库依赖了微软的库，那处理起来就要特别小心。
 
 ### 依赖了Microsoft.Extensions.*相关包
 
-_Microsoft.Extensions.*_库提供了一些基础功能，例如[依赖项注入](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/)，[配置](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/)，[日志记录](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)和[通用主机](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/)。 这些功能全部由ASP.NET Core应用程序使用，但是您也可以在没有ASP.NET Core的情况下，使用它们来创建各种其他服务或控制台应用程序。
+*Microsoft.Extensions.\**库提供了一些基础功能，例如[依赖项注入](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/)，[配置](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/)，[日志记录](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)和[通用主机](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/)。 这些功能全部由ASP.NET Core应用程序使用，但是您也可以在没有ASP.NET Core的情况下，使用它们来创建各种其他服务或控制台应用程序。
 
-使用_Microsoft.Extensions.*_的好处是，使您可以轻松创建使用.NET Core生态的项目，使得用户使用基础功能变得非常简单。
+使用*Microsoft.Extensions.\**的好处是，使您可以轻松创建使用.NET Core生态的项目，使得用户使用基础功能变得非常简单。
 
-在.NET Core 3.0中，_Microsoft.Extensions.*_类库的主要版本均升至3.0.0。 同时目标也支持`netstandard2.0`和`netcoreapp3.0`。鉴于.NET Core 2.x应用程序支持.NET Standard 2.0，那么可以在.NET Core 2.x中使用3.0.0 _Microsoft.Extensions.*_类库吗？
+在.NET Core 3.0中，*Microsoft.Extensions.\**类库的主要版本均升至3.0.0。 同时目标也支持`netstandard2.0`和`netcoreapp3.0`。鉴于.NET Core 2.x应用程序支持.NET Standard 2.0，那么可以在.NET Core 2.x中使用3.0.0 *Microsoft.Extensions.\**类库吗？
 
-如果您使用的是控制台应用程序，升级_Microsoft.Extensions.*_到*3.0.0*，是没问题的。并且可以使用*3.0.0*中的那些新的类对象。
+如果您使用的是控制台应用程序，升级*Microsoft.Extensions.\**到*3.0.0*，是没问题的。并且可以使用*3.0.0*中的那些新的类对象。
 
 但如果你使用的是ASP.NET Core 2.x应用程序呢？
 
-是不行的。尽管您可以添加对3.0.0库的引用，但是在ASP.NET Core 2.x应用程序中，核心库也依赖于_Microsoft.Extensions.*_。 当您编译应用程序时，会出现以下错误：
+是不行的。尽管您可以添加对3.0.0库的引用，但是在ASP.NET Core 2.x应用程序中，核心库也依赖于*Microsoft.Extensions.\**。 当您编译应用程序时，会出现以下错误：
 
 ```bash
 C:\repos\test\test.csproj : warning NU1608: Detected package version outside of dependency constraint: Microsoft.AspNetCore.App 2.1.1 requires Microsoft.Extensions.Configuration.Abstractions (>= 2.1.1 && < 2.2.0) but version Microsoft.Extensions.Configuration.Abstractions 3.0.0 was 
@@ -99,17 +99,17 @@ resolved.
 C:\repos\test.csproj : error NU1107: Version conflict detected for Microsoft.Extensions.Primitives. Install/reference Microsoft.Extensions.Primitives 3.0.0 directly to project PwnedPasswords.Sample to resolve this issue.
 ```
 
-你只能接受ASP.NET Core 2.x应用程序不能使用_Microsoft.Extensions.*_的*3.0.0*的事实了。
+你只能接受ASP.NET Core 2.x应用程序不能使用*Microsoft.Extensions.\**的*3.0.0*的事实了。
 
-现在，我们来看看_Microsoft.Extensions.*_库对您自己类库的影响。
+现在，我们来看看*Microsoft.Extensions.\**库对您自己类库的影响。
 
-**问：我的类库使用了_Microsoft.Extensions.*_，并只在.NET Core 3.0下使用**
+**问：我的类库使用了*Microsoft.Extensions.\**，并只在.NET Core 3.0下使用**
 
 如果您的类库只是对内使用的（无需考虑其它外部类库引用您），则可以仅指定.NET Core 3.0目标。 在这种情况下，将3.0.0作为目标是有意义的。
 
-**问：我的类库使用了_Microsoft.Extensions.*_，并在.NET Core 2.x和3.0下都有使用**
+**问：我的类库使用了*Microsoft.Extensions.\**，并在.NET Core 2.x和3.0下都有使用**
 
-在大多数情况下，_Microsoft.Extensions.*_的2.x和3.0版本之间几乎没有什么区别。 特别是_Microsoft.Extensions.* .Abstractions_的相关库：*Microsoft.Extensions.Configuration.Abstractions* ...
+在大多数情况下，*Microsoft.Extensions.\**的2.x和3.0版本之间几乎没有什么区别。 特别是*Microsoft.Extensions.\* .Abstractions的相关库：*Microsoft.Extensions.Configuration.Abstractions* ...
 
 例如，对于*Microsoft.Extensions.Configuration.Abstractions*，在版本2.2.0和3.0.0之间，实际上添加了一个API：
 
@@ -138,9 +138,9 @@ C:\repos\test.csproj : error NU1107: Version conflict detected for Microsoft.Ext
 </Project>
 ```
 
-> 需要注意.NET Framework目标，您需要为_Microsoft.Extensions.*_库使用重定向绑定。 
+> 需要注意.NET Framework目标，您需要为*Microsoft.Extensions.\**库使用重定向绑定。 
 
-**问：我的类库使用了_Microsoft.Extensions.*_，并且分别在.NET Core 2.x和3.0使用了不同的版本**
+**问：我的类库使用了*Microsoft.Extensions.\**，并且分别在.NET Core 2.x和3.0使用了不同的版本**
 
 并非所有的类库都可以采用静默方式安全地升级。 例如，[*Microsoft.Extensions.Options*](https://www.fuget.org/packages/Microsoft.Extensions.Options/3.0.0/lib/netstandard2.0/diff/2.2.0/)， 在3.0.0中，从[`OptionsWrapper<>`](https://github.com/aspnet/Extensions/blob/20dbe660793d5280aead975cd5e6e8d6b280ea3c/src/Options/Options/src/OptionsWrapper.cs)中删除了`Add`，`Get`和`Remove`方法。 如果您的类库使用了这些方法，那么使用在ASP.NET Core 3.0中运行的应用程序，将在运行时抛出`MethodNotFoundException`异常。
 
@@ -179,11 +179,11 @@ C:\repos\test.csproj : error NU1107: Version conflict detected for Microsoft.Ext
 
 这种方式的主要缺点：项目文件较为复杂，代码中也到处充斥着`#if`，`#elseif` 等编译条件，另外还需要增加额外的测试。但是这种方式是最安全的。
 
-我还剩下一种情况没有说：.NET Core 2.x应用程序（非ASP.NET Core），并且使用了3.0.0版本的_Microsoft.Extensions.*_库（或4.0.0版本的*IdentityModel*），并且正在使用通过上述方法构建。 在这种情况下，运行时会使用`netstandard2.0`，您可能又回到`MethodNotFound`的老路上。 幸运地是，这似乎比较小众，通常不予支持。
+我还剩下一种情况没有说：.NET Core 2.x应用程序（非ASP.NET Core），并且使用了3.0.0版本的*Microsoft.Extensions.\**库（或4.0.0版本的*IdentityModel*），并且正在使用通过上述方法构建。 在这种情况下，运行时会使用`netstandard2.0`，您可能又回到`MethodNotFound`的老路上。 幸运地是，这似乎比较小众，通常不予支持。
 
 ### 依赖了ASP.NET Core相关包
 
-你的类库依赖于ASP.NET Core的相关库。 包括所有以_Microsoft.AspNetCore.*_开头的类库（[有关完整列表，请参阅迁移指南](https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio#remove-obsolete-package-references)）。 这些NuGet软件包不再推送到[https://nuget.org](https://nuget.org)，因此您无法通过Nuget引用它们！它们作为ASP.NET Core 3.0共享框架的一部分被安装。您可以使用`<FrameworkReference>`方式一次性引用，而无需每个单独引用，ASP.NET Core 3.0中的所有API均可用。
+你的类库依赖于ASP.NET Core的相关库。 包括所有以*Microsoft.Extensions.\**开头的类库（[有关完整列表，请参阅迁移指南](https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.0&tabs=visual-studio#remove-obsolete-package-references)）。 这些NuGet软件包不再推送到[https://nuget.org](https://nuget.org)，因此您无法通过Nuget引用它们！它们作为ASP.NET Core 3.0共享框架的一部分被安装。您可以使用`<FrameworkReference>`方式一次性引用，而无需每个单独引用，ASP.NET Core 3.0中的所有API均可用。
 
 `<FrameworkReference>`有个很不错的功能，它不需要生成额外的类库到输出文件夹中。*MSBuild*知道你应用程序会调用哪些Api。因此你的[应用程序发布体积得到了缩减](https://stackoverflow.com/a/57760357/6375486)。
 
@@ -215,7 +215,7 @@ C:\repos\test.csproj : error NU1107: Version conflict detected for Microsoft.Ext
 
 **问：我的类库需要同时支持 ASP.NET Core 2.x and ASP.NET Core 3.0** 
 
-处理这种情况的唯一的方法是：使用我们先前处理_Microsoft.Extensions.*_和_IdentityModel_的方式。 同时支持*.NET Standard 2.0*目标框架（以支持.NET Core 2.x和.NET Framework 4.6.1+），和*.NET Core 3.0*目标框架。 并使用条件分别引用*ASP.NET Core 2.x*和*ASP.NET Core 3.0*下的程序包，参考项目文件：
+处理这种情况的唯一的方法是：使用我们先前处理*Microsoft.Extensions.\**和*IdentityModel*的方式。 同时支持*.NET Standard 2.0*目标框架（以支持.NET Core 2.x和.NET Framework 4.6.1+），和*.NET Core 3.0*目标框架。 并使用条件分别引用*ASP.NET Core 2.x*和*ASP.NET Core 3.0*下的程序包，参考项目文件：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -245,6 +245,6 @@ C:\repos\test.csproj : error NU1107: Version conflict detected for Microsoft.Ext
 
 在这篇文章中，我尝试根据其依赖关系，分解所有不同的方法，来升级类库以支持.NET Core 3.0。 
 
-- 如果您不依赖任何包，又或者没有依赖*ASP.NET Core* / _Microsoft.Extensions.*_，那么升级就不会有任何问题。 
-- 如果您对_Microsoft.Extensions.*_有依赖，则可以在不升级包的情况下解决问题，但是，您可能需要在*.csproj*文件中，添加不同目标框架的条件引用。 
-- 如果您对_ASP.NET Core_有依赖，并且还需要支持2.x和3.0，那么可以肯定的是，需要将MSBuild条件添加到*.csproj*文件中。
+- 如果您不依赖任何包，又或者没有依赖*ASP.NET Core*/*Microsoft.Extensions.\**，那么升级就不会有任何问题。 
+- 如果您对*Microsoft.Extensions.\**有依赖，则可以在不升级包的情况下解决问题，但是，您可能需要在*.csproj*文件中，添加不同目标框架的条件引用。 
+- 如果您对*ASP.NET Core*有依赖，并且还需要支持2.x和3.0，那么可以肯定的是，需要将MSBuild条件添加到*.csproj*文件中。
