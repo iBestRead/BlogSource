@@ -126,7 +126,7 @@ markdown:
     html: true                 # 是否对HTML标签进行解析，false时HTML将按照原样输出
     xhtmlOut: false            # 是否需要满足严格的XHTML格式，换行为<br />
     breaks: true
-    linkify: true
+    linkify: false
     typographer: true
     quotes: '“”‘’'
   plugins:

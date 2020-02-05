@@ -30,9 +30,9 @@ date: 2020-02-05 22:01:00
 
 假设您有一个或多个类库，并准备升级至.NET Core 3.0，按照下面不同情况，将类库的依赖关系进行拆分：
 
-- [您的类库，不依赖其他的类库](#不依赖其它类库)
-- [你的类库，依赖了Microsoft.Extensions.*相关包](#依赖了Microsoft.Extensions.*相关包)
-- [你的类库，依赖了ASP.NET Core相关类库](#依赖了ASP.NET Core相关包)
+- [您的类库，不依赖其他的类库](/converting-a-netstandard-2-library-to-netcore-3/#不依赖其它类库)
+- [你的类库，依赖了Microsoft.Extensions.*相关包](/converting-a-netstandard-2-library-to-netcore-3/#依赖了Microsoft-Extensions-相关包)
+- [你的类库，依赖了ASP.NET Core相关类库](/converting-a-netstandard-2-library-to-netcore-3/#依赖了ASP-NET-Core相关包)
 
 <!-- more --> 
 
