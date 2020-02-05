@@ -8,7 +8,7 @@ subtitle: Best read for you
 description: Best Read For You
 keywords:
 author: Akini Xu
-language: en
+language: zh-Hans
 timezone:
 
 # URL
@@ -87,7 +87,7 @@ algolia:
     - tags
     - categories
     - excerpt:strip
-    - content:strip:truncate,0,4800
+    - content:strip:truncate,0,4000
     - slug
     - permalink
     - path
