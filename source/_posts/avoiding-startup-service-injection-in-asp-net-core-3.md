@@ -145,13 +145,13 @@ Unhandled exception. System.InvalidOperationException: Unable to resolve service
 即便将服务生命周期配置为`Singleton`，也会被创建两次：
 
 - 一次在临时*ServiceProvider*，被注入到了`Startup`类中
-- 一次在永久ServiceProvider*，被注入到应用程序中
+- 一次在永久*ServiceProvider*，被注入到应用程序中
 
-对于上面这种的情况，即便*ServiceProvider*被创建两次，也没有什么大问题。但是，我们的应用程序通常会有很多给配置对象。那么，就会出现很多个被“泄露”的配置对象实例。 ASP.NET Core 3.0中的通用主机，针对此处的重构目的，减少泄露，使程序更加安全地运行。
+对于上面这种的情况（只使用了一个配置对象），即便*ServiceProvider*被创建两次，也没有什么大问题。但是，我们的应用程序通常会有很多个配置对象。那么，就会出现很多个被“泄露”的配置对象的实例。 ASP.NET Core 3.0中的通用主机，针对此处的重构目的，减少泄露，使程序更加安全地运行。
 
 ## ConfigureServices需要注入的服务怎么办
 
-不能再在`Startup`中注入其它服务（`IHostEnvironment`和`IConfiguration`除外）了。如果非要使用其它服务，又应该如何处理呢？下面会演示在` Startup.ConfigureServices`中，根据不同配置，注入不同服务到容器中：
+不能再在`Startup`中注入其它服务（`IHostEnvironment`和`IConfiguration`除外）了。如果非要使用其它服务，又应该如何处理呢？下面会演示在`Startup.ConfigureServices`中，根据不同配置，注入不同服务到容器中：
 
 ```csharp
 public class Startup
@@ -264,7 +264,7 @@ public class Startup
 }
 ```
 
-如果只是获取配置中某个字符串的话。 可以直接从`IConfiguration`实例中获取配置，就像ASP.NET Core默认模板项目的代码一样：
+如果只是获取配置中某个字符串的话。 可以直接从`IConfiguration`实例中获取配置，就像ASP.NET Core默认模板项目中获取数据库连接字符串那种：
 
 ```csharp
 public class Startup
@@ -297,7 +297,7 @@ public class Startup
 
 以上示例，虽然不是最好的解决方法，但是它们可以解决问题，在大多数情况下，都可以满足你的需求。 
 
-有时先向`Startup`中注入配置对象A，来配置其它强类型配置对象B。 对于这些情况，使用`IConfigureOptions`是一种更好的方法。
+假如，有个配置对象B依赖另外一个配置对象A。 对于这些情况，使用`IConfigureOptions`是一种更好的方法。
 
 ## 使用IConfigureOptions来配置选型
 
