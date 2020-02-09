@@ -23,28 +23,28 @@ date: 2020-02-08 09:41:00
 4. [将终端中间件转换为端点路由](/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/)
 5. [将集成测试升级至.NET Core 3.0](/converting-integration-tests-to-net-core-3/)
 
-在本文中，我描述了从ASP.NET Core 2.x应用程序升级至.NET Core 3时对`Startup`所做的更改之一； 您不能再随意将服务注入`Startup`构造函数。
+当从ASP.NET Core 2.x应用程序升级至.NET Core 3时，`Startup`中的代码需要有所改动，不能再随便将服务注入到`Startup`构造函数中了。
 
 <!-- more -->
 
 ## 迁移到ASP.NET Core 3.0的通用主机
 
-在.NET Core 3.0中，[开发团队对ASP.NET Core 3.0主机的基础架构进行了重构，它是依赖通用主机创建的](/ihostingenvironment-vs-ihost-environment-obsolete-types-in-net-core-3/#IHostingEnvironment-IHostEnvironment-IWebHostEnviornment3者对比)。 到目前为止，我已经升级了几个应用程序到ASP.Net Core 3.0，一切进展顺利。[ 迁移指南文档](https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30)可以很好地引导您完成所需的步骤，因此，我强烈建议您逐步完成该文档。
+在.NET Core 3.0中，[开发团队对ASP.NET Core 3.0主机的基础架构进行了重构](/ihostingenvironment-vs-ihost-environment-obsolete-types-in-net-core-3/#IHostingEnvironment-IHostEnvironment-IWebHostEnviornment3者对比)。 到目前为止，我已经顺利升级了几个应用程序到ASP.Net Core 3.0。[ 迁移指南文档](https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30)可以很好地引导您完成所需的步骤，我强烈建议您按照此文档来升级。
 
-在大多数情况下，我只需要解决两个问题：
+大多数情况下，只需要解决两个问题：
 
 - 在ASP.NET Core 3.0中使用端点路由中间件
-- 使用通用主机时，不要在`Startup`注入服务。
+- 使用通用主机时，不要在`Startup`中注入服务。
 
-第一点在很多文章中都有提到。 端点路由是在ASP.NET Core 2.2中引入的，但仅限于MVC。 在ASP.NET Core 3.0中，端点路由中间件是被优先推荐使用的，因为它具有很多优点。 最重要的是，它会匹配对应的端点来执行请求。
+第一点在很多文章中都有所提到。 端点路由是在ASP.NET Core 2.2中引入的，但仅限于MVC中使用。 在ASP.NET Core 3.0中，优先推荐使用端点路由，它有很多优点。
 
 > 中间件的顺序对端点路由来说非常关键。 建议您在升级应用程序时，仔细阅读[迁移文档的这一部分](https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30#routing-startup-code)。 在下面的文章中，我将展示如何将终端中间件转换为端点路由。
 
-第二点，已经提到了将服务注入`Startup`类的问题。 下面的文章，我将展示这种用法的遇到的问题以及一些解决方法。
+第二点，提到了不要在`Startup`注入服务的问题。 下面的文章，我将说明这种用法的问题以及如何解决。
 
 ## 在ASP.NET Core 2.x的Startup中注入服务
 
-在ASP.NET core 2.x中，可以在*Program.cs*中将配置服务注入至容器，然后将配置服务注入到*Startup.cs*中使用。 我通常会使用这种方法来设置强类型的配置对象，然后在其它代码中通过注入来使用。
+在ASP.NET core 2.x中，可以在*Program.cs*中将配置对象（Option或Setting）注入至容器，然后将配置对象注入到*Startup.cs*中使用。 通常都会使用这种方法来设置强类型的配置对象，方便其它类注入使用。
 
 我们来看看ASP.NET core 2.x中的例子：
 
@@ -63,7 +63,7 @@ public class Program
 }
 ```
 
-注意`CreateWebHostBuilder`中的`ConfigureSettings()`方法。 它是用来配置强类型配置服务的扩展方法。 例如：
+`CreateWebHostBuilder`中调用了`ConfigureSettings()`方法。 代码如下：
 
 ```csharp
 public static class SettingsinstallerExtensions
@@ -82,7 +82,7 @@ public static class SettingsinstallerExtensions
 }
 ```
 
-本质上`ConfigureSettings()`方法是调用`IWebHostBuilder`实例的`ConfigureServices()`方法，并做了些配置对象的注入。 由于提前在DI容器中配置了这些服务，因此，可以在`Startup`构造函数中注入获取：
+这个方法内部通过`IWebHostBuilder`实例的`ConfigureServices()`方法，对配置对象进行了注入。所以，可以在`Startup`构造函数中获取到配置对象：
 
 ```csharp
 public static class Startup
@@ -117,9 +117,9 @@ public static class Startup
 }
 ```
 
-当在`ConfigureServices`中使用强类型的配置对象，来设置（初始化）其他服务时，上面这种方法很有用。 在上面的示例中，`ConnectionStrings`是强类型的配置对象，并且在[启动时进行了验证]( https://andrewlock.net/adding-validation-to-strongly-typed-configuration-objects-in-asp-net-core/ )，以确保它们不为null。 
+通过使用强类型的配置对象，来设置（初始化）其他服务时，这是很常见的。 在上面的示例中，`ConnectionStrings`是强类型的配置对象，可以在[启动时进行校验]( https://andrewlock.net/adding-validation-to-strongly-typed-configuration-objects-in-asp-net-core/ )，以确保它们不为null。 
 
- 但是，在ASP.NET Core 3.0的通用主机中采取这种方法，会出现下面异常： 
+ 但是在ASP.NET Core 3.0的通用主机中使用这种方式，则会出现下面的异常： 
 
 ```bash
 Unhandled exception. System.InvalidOperationException: Unable to resolve service for type 'ExampleProject.ConnectionStrings' while attempting to activate 'ExampleProject.Startup'.
@@ -132,26 +132,26 @@ Unhandled exception. System.InvalidOperationException: Unable to resolve service
    at ExampleProject.Program.Main(String[] args) in C:\repos\ExampleProject\Program.cs:line 21
 ```
 
-ASP.NET Core 3.0不再支持此种方式。 `Startup`构造函数中只能注入`IHostEnvironment`和`IConfiguration`。 
+出现异常的原因是，ASP.NET Core 3.0不再支持这种方式。 `Startup`构造函数中只能注入`IHostEnvironment`和`IConfiguration`。 
 
-> 请注意，如果在ASP.NET Core 3.0中使用的是IWebHostBuilder而不是通用主机，则可以继续使用此方法。但是强烈建议您不要这样做，还是尽可能迁移使用新方法！
+> 请注意，如果在ASP.NET Core 3.0中使用的是IWebHostBuilder而不是通用主机，是可以继续使用此方式。但是强烈建议尽可能修改代码使用新方法！
 
-## 出现2个单例对象
+## 会出现2个单例对象
 
-不要将服务注入`Startup`的原因是，它会创建两次服务提供器。 在上面的示例中，ASP.NET Core发现需要一个`ConnectionStrings`对象，并且创建这个对象的唯一的创建方式是，`ConfigureSettings()`内的`IServiceProvider`服务提供器来创建的。
+不要将其它服务注入`Startup`的原因是，它会创建两次*ServiceProvider*。 在上面的示例中，应用程序启动时需要一个`ConnectionStrings`配置对象，然而这个配置对象的唯一创建方式是，`ConfigureSettings()`内的`IServiceProvider`。
 
-这为什么会是一个问题呢？ 原因在于`ConfigureSettings()`中的服务提供器（service provider）是一个临时的服务提供器。 它创建`ConnectionStrings`并将其注入`Startup`。 然后，其它的依赖服务被注入容器，配置对象被作为*ConfigureServices*的参数运行，接着，临时服务提供器被丢弃。 再接着，又创建一个新的服务提供器，这个服务器提供器才是应用程序整个生命周期中的永久对象。
+其实`ConfigureSettings()`中的`IServiceProvider`只是一个临时的*ServiceProvider*。 它创建`ConnectionStrings`并将其注入`Startup`；接着再注入其它的依赖服务和配置对象，这些服务和配置被作为*ConfigureServices*方法的参数执行；再然后，临时*ServiceProvider*被释放。 最后又重新创建一个新的*ServiceProvider*，这个*ServiceProvider*才是应用程序整个生命周期中的永久对象。
 
-这样的结果是，即便服务配置为`Singleton`，也将被创建两次：
+即便将服务生命周期配置为`Singleton`，也会被创建两次：
 
-- 一次在临时服务提供器，被注入到了`Startup`类中
-- 一次在永久性的服务提供器，被注入到应用程序中
+- 一次在临时*ServiceProvider*，被注入到了`Startup`类中
+- 一次在永久ServiceProvider*，被注入到应用程序中
 
-对于上面用例（需要使用强类型配置）的情况，即便服务提供器被创建两次，也没有什么关系。但是，通常我们的程序不只会有这一个配置服务。那么就会出现很多个被“泄露”的配置服务实例。 ASP.NET Core 3.0中的通用主机，重构了这个位置的主要目的就是，使你的程序更加安全地运行。
+对于上面这种的情况，即便*ServiceProvider*被创建两次，也没有什么大问题。但是，我们的应用程序通常会有很多给配置对象。那么，就会出现很多个被“泄露”的配置对象实例。 ASP.NET Core 3.0中的通用主机，针对此处的重构目的，减少泄露，使程序更加安全地运行。
 
 ## ConfigureServices需要注入的服务怎么办
 
-不能再在`Startup`构造函数中注入其它服务（`IHostEnvironment`和`IConfiguration`除外）了。如果你非要使用其它服务，应该如何处理呢？下面的示例会演示如何在` Startup.ConfigureServices`中，根据不同配置，注入不同服务到容器中：
+不能再在`Startup`中注入其它服务（`IHostEnvironment`和`IConfiguration`除外）了。如果非要使用其它服务，又应该如何处理呢？下面会演示在` Startup.ConfigureServices`中，根据不同配置，注入不同服务到容器中：
 
 ```csharp
 public class Startup
@@ -182,9 +182,9 @@ public class Startup
 }
 ```
 
-示例中，通过判断注入的`IdentitySettings`的`UseFakeIdentity`属性，再确定要注入哪个`IIdentityService`接口的实现，到底是Fake服务还是Real服务。
+示例中，根据注入的`IdentitySettings`的`UseFakeIdentity`的属性值，确定要注入哪个`IIdentityService`接口的实现，到底是Fake服务还是Real服务。
 
-使用工厂方式注册，可以满足这个需求，并与通用主机兼容。 例如：
+通过工厂方式注册，可以满足这个需求，并且与通用主机模式兼容。 例如：
 
 ```csharp
 public class Startup
@@ -223,9 +223,9 @@ public class Startup
 }
 ```
 
-这种方法明显比之前的写法复杂得多，好处是至少与通用主机兼容了。
+这种方法明显比之前的写法复杂得多，好处是至少与通用主机模式兼容了。
 
-如果仅需要强类型配置这种（如本例所示），用此方法有些复杂。 我们可以使用更为简便的**重新绑定**（rebind）方式：
+如果仅需要强类型配置（如本例所示），用此方法有些复杂。 我们可以使用更为简便的**重新绑定**（rebind）方式：
 
 ```csharp
 public class Startup
@@ -264,7 +264,7 @@ public class Startup
 }
 ```
 
-另外，如果强类型配置这种都不要了，只是获取配置中某个字符串的话。 可以直接从`IConfiguration`实例中获取配置，就像ASP.NET Core默认模板项目的代码一样：
+如果只是获取配置中某个字符串的话。 可以直接从`IConfiguration`实例中获取配置，就像ASP.NET Core默认模板项目的代码一样：
 
 ```csharp
 public class Startup
@@ -295,13 +295,13 @@ public class Startup
 }
 ```
 
-以上示例，虽然不是最好的解决方法，但是它们可以解决问题，并且在大多数情况下，都可以满足你的需求。 如果您不了解启动注入的特性，那你就使用上面这些方式好了。
+以上示例，虽然不是最好的解决方法，但是它们可以解决问题，在大多数情况下，都可以满足你的需求。 
 
-有时我们会向`Startup`中注入配置对象A，来配置其它强类型配置对象B。 对于这些情况，使用`IConfigureOptions`是一种更好的方法。
+有时先向`Startup`中注入配置对象A，来配置其它强类型配置对象B。 对于这些情况，使用`IConfigureOptions`是一种更好的方法。
 
 ## 使用IConfigureOptions来配置选型
 
-我们常见的注入配置选型是，配置`IdentityServer`身份验证，[如其文档中所述](http://docs.identityserver.io/en/latest/topics/apis.html#the-identityserver-authentication-handler)：
+我们经常会使用注入`ConfigureOption`方式，比如使用`IdentityServer`时，[如其文档中所述](http://docs.identityserver.io/en/latest/topics/apis.html#the-identityserver-authentication-handler)：
 
 ```csharp
 public class Startup
@@ -333,7 +333,7 @@ public class Startup
 }
 ```
 
-在此示例中，使用强类型配置对象`IdentitySettings`，设置`IdentityServer`对象的属性，如Url和API资源名称。 这种设置方式在.NET Core 3.0中是不起作用，我们需要一种替代方式。 我们可以像上面示例那样，重新绑定强类型配置。 又或者，可以直接使用`IConfiguration`对象来获取配置。
+利用已注入的强类型配置对象`IdentitySettings`的实例，去赋值`IdentityServer.Option`属性，如Url和API资源名称。 这种设置方式在.NET Core 3.0中是不起作用，我们需要一种替代方式。 我们可以像上面示例那样，重新绑定强类型配置。 又或者，可以直接使用`IConfiguration`对象来获取配置。
 
 源码中，`AddIdentityServerAuthentication()`先配置了JWT方式的身份验证，再指定的身份验证方案（IdentityServerAuthenticationDefaults.AuthenticationScheme），并对方案所需的强类型配置进行赋值。 这样，程序可以根据实际情况，使用` IConfigureOptions `实例的值，替换掉强类型配置的值。
 
@@ -355,7 +355,7 @@ public class MyTestSettingsConfigureOptions : IConfigureOptions<TestSettings>
 }
 ```
 
-在`Startup.ConfigureServices`方法中，同时注入`TestService`和`IConfigureOptions <TestSettings>`：
+在`Startup.ConfigureServices`方法中，同时注入`TestService`和`IConfigureOptions<TestSettings>`：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -365,13 +365,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-要注意，我们可以直接使用标准方式来注入`IOptions<TestSettings>`。 无需在ConfigureServices内部先注入`TestSettings`。 另外，我们只是注册了`TestSettings`的一个占位，直到真正需要它时，才进行了延迟赋值。
+如果采用这种方式，我们应该如何来配置IdentityServer？
 
-那么，这如何帮助我们配置IdentityServer？
+首先，我们要了解一下，可命名Options（我之前已经讨论过几次，[链接1](https://andrewlock.net/configuring-named-options-using-iconfigurenamedoptions-and-configureall/)，[链接2](https://andrewlock.net/creating-singleton-named-options-with-ioptionsmonitor/)，[链接3](https://andrewlock.net/using-multiple-instances-of-strongly-typed-settings-with-named-options-in-net-core-2-x/)）。 `AddIdentityServerAuthentication`使用的就是Options。 
 
-`AddIdentityServerAuthentication`使用强类型配置的一种变体，称为命名选项（我之前已经讨论过几次，[链接1](https://andrewlock.net/configuring-named-options-using-iconfigurenamedoptions-and-configureall/)，[链接2](https://andrewlock.net/creating-singleton-named-options-with-ioptionsmonitor/)，[链接3](https://andrewlock.net/using-multiple-instances-of-strongly-typed-settings-with-named-options-in-net-core-2-x/)）。 如在本示例中一样，它们最常用于配置身份验证。
-
-长话短说，可以使用`IConfigureOptions`，对命名选项`IdentityServerAuthenticationOptions`进行延迟配置，真正的值是从强类型的`IdentitySettings`对象中获取。 因此，您可以创建一个将`IdentitySettings`作为构造函数参数的`ConfigureIdentityServerOptions`对象：
+对可命名Options`IdentityServerAuthenticationOptions`进行延迟配置，真正的值是从强类型配置对象`IdentitySettings`中获取。 创建一个将`IdentitySettings`作为构造函数参数的`ConfigureIdentityServerOptions`对象：
 
 ```csharp
 public class ConfigureIdentityServerOptions : IConfigureNamedOptions<IdentityServerAuthenticationOptions>
