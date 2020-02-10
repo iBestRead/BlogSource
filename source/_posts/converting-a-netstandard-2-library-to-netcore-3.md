@@ -19,7 +19,7 @@ date: 2020-02-05 22:01:00
 1. [转换.NET Standard 2.0类库到.NET Core 3.0](/converting-a-netstandard-2-library-to-netcore-3/)
 2. [对比IHostingEnvironment与IHostEnvironment .NET及Core 3.0中的过时类型](/ihostingenvironment-vs-ihost-environment-obsolete-types-in-net-core-3/)
 3. [不要在Startup类的构造函数中使用依赖注入](/avoiding-startup-service-injection-in-asp-net-core-3/)
-4. [将终端中间件转换为端点路由](/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/)
+4. [将末端中间件转换为端点路由](/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/)
 5. [将集成测试升级至.NET Core 3.0](/converting-integration-tests-to-net-core-3/)
 
 这是从ASP.NET Core 2.x升级到ASP.NET Core 3.0的系列的第1篇文章。 我不会讨论诸[Blazor](https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-3.0)或[gRPC](https://docs.microsoft.com/en-us/aspnet/core/tutorials/grpc/grpc-start)等比较大的新特性。 相反，我将介绍一些令人困惑的事情，例如，如何将类库升级到ASP.NET Core 3.0目标，如何使用基于通用主机的服务器以及如何使用端点路由。

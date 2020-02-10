@@ -20,7 +20,7 @@ date: 2020-02-08 09:41:00
 1. [转换.NET Standard 2.0类库到.NET Core 3.0](/converting-a-netstandard-2-library-to-netcore-3/)
 2. [对比IHostingEnvironment与IHostEnvironment .NET及Core 3.0中的过时类型](/ihostingenvironment-vs-ihost-environment-obsolete-types-in-net-core-3/)
 3. [不要在Startup类的构造函数中使用依赖注入](/avoiding-startup-service-injection-in-asp-net-core-3/)
-4. [将终端中间件转换为端点路由](/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/)
+4. [将末端中间件转换为端点路由](/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/)
 5. [将集成测试升级至.NET Core 3.0](/converting-integration-tests-to-net-core-3/)
 
 当从ASP.NET Core 2.x应用程序升级至.NET Core 3时，`Startup`中的代码需要有所改动，不能再随便将服务注入到`Startup`构造函数中了。
