@@ -248,7 +248,7 @@ google_adsense:
   
 # canvas_ribbon
 canvas_ribbon:
-  enable: true
+  enable: false
   size: 150
   alpha: 0.6
   zIndex: -1
