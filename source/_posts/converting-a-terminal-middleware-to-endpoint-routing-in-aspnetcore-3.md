@@ -16,7 +16,7 @@ date: 2020-02-10 07:40:00
 > 作者:  [Andrew Lock](https://andrewlock.net/about/)
 >
 
-此文是 [升级至 ASP.NET Core 3.0](/upgrading-to-asp-net-core-3) 第3篇:
+此文是 [升级至 ASP.NET Core 3.0](/upgrading-to-asp-net-core-3) 第4篇:
 
 1. [转换.NET Standard 2.0类库到.NET Core 3.0](/converting-a-netstandard-2-library-to-netcore-3/)
 2. [对比IHostingEnvironment与IHostEnvironment .NET及Core 3.0中的过时类型](/ihostingenvironment-vs-ihost-environment-obsolete-types-in-net-core-3/)
