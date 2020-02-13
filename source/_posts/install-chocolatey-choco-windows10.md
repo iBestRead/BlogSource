@@ -3,7 +3,7 @@ title: Windows下的软件管理利器-Chocolatey
 tags: 
   - 效率
   - Chocolatey
-  - Windows
+  - WINDOWS
   - 软件
 
 categories:
