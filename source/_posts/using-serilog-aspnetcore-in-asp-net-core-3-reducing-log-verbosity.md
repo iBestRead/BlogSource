@@ -103,7 +103,7 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 ```
 
-啥都没有。上一次运行时，产生的日志都位于Microsoft命名空间下，并且属于“Information”级别，所以它们全部被过滤掉了。 就个人而言，觉得这种处理方式有点过了。如果没有其它日志时，生产环境下最好还是应该输出点日志。
+啥都没有。上一次运行时，产生的日志都位于Microsoft命名空间下，并且属于“Information”级别，所以它们全部被过滤掉了。 就个人而言，觉得这种处理方式有点过了。如果没有其它日志时，生产环境下最好还是应该输出点日志，不然啥都没输出，还以为应用程序挂了。
 
 可以通过针对特定的名称空间指定日志级别方式来处理这个问题。例如，调整*Microsoft.AspNetCore.Mvc.RazorPages*名称空间的日志级别为“Warning”，调整*Microsoft*名称空间的日志级别为"Information"，下面是修改后的日志：
 
