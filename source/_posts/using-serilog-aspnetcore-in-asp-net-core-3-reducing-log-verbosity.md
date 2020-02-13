@@ -105,7 +105,7 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 啥都没有。上一次运行时，产生的日志都位于Microsoft命名空间下，并且属于“Information”级别，所以它们全部被过滤掉了。 就个人而言，觉得这种处理方式有点过了。如果没有其它日志时，生产环境下最好还是应该输出点日志，不然啥都没输出，还以为应用程序挂了。
 
-可以通过针对特定的名称空间指定日志级别方式来处理这个问题。例如，调整*Microsoft.AspNetCore.Mvc.RazorPages*名称空间的日志级别为“Warning”，调整*Microsoft*名称空间的日志级别为"Information"，下面是修改后的日志：
+通过对特定的名称空间指定日志级别，可以解决这个问题。例如，调整*Microsoft.AspNetCore.Mvc.RazorPages*名称空间的日志级别为“Warning”，调整*Microsoft*名称空间的日志级别为"Information"，下面是修改后的日志：
 
 ```bash
 info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
@@ -118,17 +118,17 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
       Request finished in 184.788ms 200 text/html; charset=utf-8
 ```
 
-虽然日志中包含了URL、HTTP方法、时间信息、端点等信息。 但是，仍然有让人头疼的地方是生成了4行日志消息。
+虽然日志中包含了URL、HTTP方法、时间信息、端点等信息。 但是，又有个让人头疼的地方是生成了4行日志消息。
 
 Serilog的`RequestLoggingMiddleware`中间件可以解决的问题。只创建一条包含所有相关信息的“摘要”日志消息。
 
 ## 在应用程序中添加Serilog引用
 
-使用Serilog的`RequestLoggingMiddleware`中间件，只需要添加对Serilog的引用即可。在本节中，将介绍如何添加Serilog到ASP.NET Core的应用程序中。 如果您已经安装了Serilog，请跳至下一部分。
+使用Serilog的`RequestLoggingMiddleware`中间件，只需要添加Serilog的引用即可。在本节中，将介绍如何添加Serilog到ASP.NET Core的应用程序中。 如果您已经安装了Serilog，请跳至下一小节。
 
-[之前的文章](https://andrewlock.net/adding-serilog-to-the-asp-net-core-generic-host/)介绍了如何将Serilog添加到通用主机应用程序中，当时的ASP.NET Core 2.x已经在通用主机基础架构上进行了重构，因此，在ASP.NET Core 3.0中添加Serilog的方法与与之前非常相似。 本文是参照[Serilog.AspNetCore GitHub](https://github.com/serilog/serilog-aspnetcore)的建议来操作的（同时参考了[Nicholas Blumhardt的帖子](https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3)）。
+[之前的文章](https://andrewlock.net/adding-serilog-to-the-asp-net-core-generic-host/)介绍了如何将Serilog添加到通用主机应用程序中，当时ASP.NET Core 2.x已经在通用主机基础架构上进行了重构，因此，在ASP.NET Core 3.0中添加Serilog的方法与之前非常相似。 本文是参照[Serilog.AspNetCore GitHub](https://github.com/serilog/serilog-aspnetcore)的建议来操作的（同时参考了[Nicholas Blumhardt的帖子](https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3)）。
 
-首先安装*Serilog.AspNetCore NuGet*包，为了方便查看日志，再添加命令行接收器和[Seq](https://datalust.co/seq)接收器。在命令行中执行下面的命令：
+首先安装*Serilog.AspNetCore NuGet*包，为了方便查看日志，再添加命令行接收器和[Seq](https://datalust.co/seq)接收器。安装命令如下：
 
 ```bash
 dotnet add package Serilog.AspNetCore
@@ -136,7 +136,7 @@ dotnet add package Serilog.Sinks.Console
 dotnet add package Serilog.Sinks.Seq
 ```
 
-用Serilog替换默认日志有多种方法。但是推荐在程序一开始就进行替换，比如在`Program.Main`中配置Serilog。 *Program.cs*的代码稍微变得多些：
+用Serilog替换默认日志有多种方法。推荐的是在程序一开始就进行替换，比如在`Program.Main`中配置Serilog。 *Program.cs*的代码稍微变得多些：
 
 ```csharp
 // Additional required namespaces
